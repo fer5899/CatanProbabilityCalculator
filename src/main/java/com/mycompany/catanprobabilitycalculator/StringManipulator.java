@@ -19,8 +19,8 @@ public class StringManipulator {
     boolean caseSensitive;
     
     
-    public StringManipulator() {
-        
+    public StringManipulator(boolean caseSensitive) {
+        this.caseSensitive = caseSensitive;
     }
     
     public void compileCreateMatcher() {
@@ -35,15 +35,19 @@ public class StringManipulator {
         matcher = pattern.matcher(toManipulate);
     }
     
-    public boolean containsPattern (String toManipulate, String regex, boolean caseSensitive) {
+    public void setCaseSensitive (boolean caseSensitive) {
+        this.caseSensitive = caseSensitive;
+    }
+    
+    public boolean containsPattern (String toManipulate, String regex) {
         this.toManipulate = toManipulate;
         this.regex = regex;
-        this.caseSensitive = caseSensitive;
        
         compileCreateMatcher();
         
         return matcher.find();
     }
+    
     
     
     

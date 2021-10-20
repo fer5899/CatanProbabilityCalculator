@@ -43,6 +43,7 @@ public class DiceBag {
         if (manipulator.containsPattern(regexFormat, dice, false)) {
             
             // set the pattern and extract number of dice
+            
             int nDice = 0;
             
             // set the pattern and extract the type of dice
