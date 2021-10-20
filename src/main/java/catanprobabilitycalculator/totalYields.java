@@ -49,14 +49,41 @@ public class totalYields {
         
         return ratio;
     }
+    
+    // Probabilities of producing something in turn given a set of tiles
+    static double getRatioOfTurnsProducing (int[] tiles, int nThrows) {
+        DiceBag myDiceBag = new DiceBag();
+        int hits = 0;
+        int dice;
+        double ratio;
+
+        // do nThrows number of turns
+        for (int a = 0; a < nThrows; a++) {
+            dice = myDiceBag.throwDice(2, 6, 0);
+
+            // check the number of tiles that produce with the dice rolled
+            for (int b = 0; b < tiles.length; b++) {
+                if (tiles[b] == dice) {
+                    hits++;
+                    break;
+                }
+            }
+        }
+
+        ratio = hits / Double.valueOf(nThrows);
+        
+        return ratio;
+    }
 
     public static void main(String args[]) {
 
-        int[] tiles = {3, 4, 5, 9, 10, 11};
+        int[] tiles = {4, 5, 6, 6, 8, 9};
+        int nThrows = 1000000;
         int nTurns = 10;
         int nGames = 1000000;
 
-        System.out.println(getYieldsRatioPerGame(tiles, nTurns, nGames));
+        System.out.println(getYieldsRatioPerTurn(tiles, nThrows)[0]);
+        System.out.println(getRatioOfTurnsProducing(tiles, nThrows));
 
     }
 }
