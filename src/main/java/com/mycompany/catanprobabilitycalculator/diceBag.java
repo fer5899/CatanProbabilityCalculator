@@ -16,7 +16,7 @@ public class DiceBag {
     Random generator;
     
     public DiceBag() {
-        Random generator = new Random();        
+        generator = new Random();
     }
     
     public int throwDice(int nDice, int diceType, int modifier) {
@@ -37,24 +37,26 @@ public class DiceBag {
         StringManipulator manipulator = new StringManipulator(false); // caseSensitive set to false
         
         // regex to check if the dice format is correct     Ej: 3d8+6
-        String regexFormat = "[1-9]*d[1-9]+\\[+-]*[1-9]*";
+        String regexFormat = "[0-9]+d[0-9]+\\+*[0-9]*";
         
         
-        if (manipulator.containsPattern(regexFormat, dice)) {
+        if (manipulator.containsPattern(dice, regexFormat)) {
             
             // set the pattern and extract number of dice
-            String regexNDice = "[1-9]*d";
-            String nDiceS = manipulator.extractFirstMatch(regexNDice, dice);
+            String regexNDice = "[0-9]+d";
+            String nDiceS = manipulator.extractFirstMatch(dice, regexNDice);
             // remove the "d" from the string obtained and parse the integer
             int nDice = 0 + Integer.parseInt(nDiceS.replaceFirst("d", "")); 
             // remove the string obtained from dice
             dice = dice.replaceFirst(nDiceS, "");
+
             
             // repeat the process for the dice type
-            String regexDiceType = "[1-9]+\\+";
-            String diceTypeS = manipulator.extractFirstMatch(regexDiceType, dice);
+            String regexDiceType = "[0-9]+\\+";
+            String diceTypeS = manipulator.extractFirstMatch(dice, regexDiceType);
             int diceType = 0 + Integer.parseInt(diceTypeS.replaceFirst("\\+", ""));
             dice = dice.replaceFirst(diceTypeS, "");
+
             
             // if everything goes well, the rest of dice is only the modifier number
             int modifier = 0 + Integer.parseInt(dice);
