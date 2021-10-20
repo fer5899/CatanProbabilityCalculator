@@ -48,7 +48,15 @@ public class StringManipulator {
         return matcher.find();
     }
     
-    
+    public String extractFirstMatch (String toManipulate, String regex) {
+        String result = "";
+        
+        if(containsPattern(toManipulate,regex)) {
+            result = matcher.group();
+        }
+        
+        return result;
+    }
     
     
 }

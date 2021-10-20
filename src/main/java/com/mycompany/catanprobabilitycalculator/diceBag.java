@@ -34,13 +34,13 @@ public class DiceBag {
         
         int result = -1;
         
-        StringManipulator manipulator = new StringManipulator();
+        StringManipulator manipulator = new StringManipulator(false); // caseSensitive set to false
         
         // regex to check if the dice format is correct     Ej: 3d8+6
         String regexFormat = "[1-9]*d[1-9]+\\[+-]*[1-9]*";
         
         
-        if (manipulator.containsPattern(regexFormat, dice, false)) {
+        if (manipulator.containsPattern(regexFormat, dice)) {
             
             // set the pattern and extract number of dice
             
