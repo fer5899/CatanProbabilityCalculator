@@ -43,16 +43,27 @@ public class DiceBag {
         if (manipulator.containsPattern(regexFormat, dice)) {
             
             // set the pattern and extract number of dice
+            String regexNDice = "[1-9]*d";
+            String nDiceS = manipulator.extractFirstMatch(regexNDice, dice);
+            // remove the "d" from the string obtained and parse the integer
+            int nDice = 0 + Integer.parseInt(nDiceS.replaceFirst("d", "")); 
+            // remove the string obtained from dice
+            dice = dice.replaceFirst(nDiceS, "");
             
-            int nDice = 0;
+            // repeat the process for the dice type
+            String regexDiceType = "[1-9]+\\+";
+            String diceTypeS = manipulator.extractFirstMatch(regexDiceType, dice);
+            int diceType = 0 + Integer.parseInt(diceTypeS.replaceFirst("\\+", ""));
+            dice = dice.replaceFirst(diceTypeS, "");
             
-            // set the pattern and extract the type of dice
-            int diceType = 0;
-            int modifier = 0;
+            // if everything goes well, the rest of dice is only the modifier number
+            int modifier = 0 + Integer.parseInt(dice);
+            
+            // execute throwDice with basic inputs
+            result = throwDice(nDice, diceType, modifier);
         }
             
-        
-        
+
         return result;
     }
     
