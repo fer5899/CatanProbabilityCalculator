@@ -3,7 +3,6 @@ package catanprobabilitycalculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 /**
  *
  * @author fer5899 Github profile: https://github.com/fer5899
@@ -23,7 +22,7 @@ public class StringManipulator {
         this.caseSensitive = caseSensitive;
     }
     
-    public void compileCreateMatcher() {
+    private void compileCreateMatcher() {
         
         if (caseSensitive) {
             pattern = Pattern.compile(regex);

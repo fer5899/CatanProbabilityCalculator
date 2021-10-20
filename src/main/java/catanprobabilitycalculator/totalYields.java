@@ -4,8 +4,6 @@ package catanprobabilitycalculator;
  *
  * @author fer5899   Github profile: https://github.com/fer5899
  */
-
-import java.util.Random;
         
 public class totalYields {
     

@@ -6,7 +6,6 @@ package catanprobabilitycalculator;
 
 import java.util.Random;
 
-
 /**
  *
  * @author fer5899 Github profile: https://github.com/fer5899
