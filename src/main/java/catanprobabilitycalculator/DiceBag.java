@@ -8,7 +8,7 @@ import java.util.Random;
 
 /**
  *
- * @author fer5899 Github profile: https://github.com/fer5899
+ * @author Fernando Gómez de la Varga   --   Github profile: https://github.com/fer5899
  */
 public class DiceBag {
     
