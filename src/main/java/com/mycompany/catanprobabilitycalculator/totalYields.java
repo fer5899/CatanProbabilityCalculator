@@ -8,25 +8,37 @@ package com.mycompany.catanprobabilitycalculator;
 import java.util.Random;
         
 public class totalYields {
-
-    static void getYields (int [] tiles, int testSize) {
+    
+    // calculates the raw yield probability of a set of tiles in a turn
+    static double getYieldsRatio (int [] tiles, int testSize) {
+        DiceBag myDiceBag = new DiceBag();
+        int hits = 0;
+        int dice;
+        double ratio;
         
+        // do testSize number of turns
+        for (int a = 0; a < testSize; a++) {
+            dice = myDiceBag.throwDice(2,6,0);
+            
+            // check the number of tiles that produce with the dice rolled
+            for (int b = 0; b < tiles.length; b++) {
+                if (tiles[b] == dice) {
+                    hits++;
+                }
+            }
+        }
+        
+        ratio = hits / Double.valueOf(testSize);
+        
+        return ratio;
     }
         
     public static void main(String args[]) {
         
-        StringManipulator manipulator = new StringManipulator(false);
-        DiceBag myDiceBag = new DiceBag();
+        int[] tiles = {5,5,6,6,8,8};
+        int testSize = 1000000;
         
-        String dice = "2d6+1";
-        String regexFormat = "[0-9]+d[0-9]+\\+*[0-9]*";
-        
-        //System.out.println(manipulator.extractFirstMatch(toManipulate, regex));
-        for (int i = 0; i < 10; i++) {
-            System.out.println(myDiceBag.throwDice(dice));
-        }
-        
-        
-        
+        System.out.println(getYieldsRatio(tiles, testSize)); 
+
     }
 }
