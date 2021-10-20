@@ -1,4 +1,4 @@
-package com.mycompany.catanprobabilitycalculator;
+package catanprobabilitycalculator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

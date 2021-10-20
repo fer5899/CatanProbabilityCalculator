@@ -1,4 +1,4 @@
-package com.mycompany.catanprobabilitycalculator;
+package catanprobabilitycalculator;
 
 /**
  *
